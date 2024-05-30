@@ -19,7 +19,16 @@ class ArticleController extends Controller
     public function detail($id)
     {
         // SELECT * From articles where id= id
+        // $article = Article::findOrFail($id);
+
         $article = Article::find($id);
+
+        if (empty($article)) {
+            return redirect('/');
+        }
+
+
+
 
         // SELECT * From Commentaires where article_id = id
         //$commentaires = Commentaire::where('article_id', '=', $id)->get();
