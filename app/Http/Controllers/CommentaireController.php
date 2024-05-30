@@ -12,7 +12,7 @@ class CommentaireController extends Controller
         $request->validate([
             'nom_complet_auteur' => 'required|max:10',
             'contenu' => 'required|max:255',
-            'article_id' => 'required',
+            'article_id' => 'required|exists:articles,id',
         ]);
 
         // $commentaire = new Commentaire();
