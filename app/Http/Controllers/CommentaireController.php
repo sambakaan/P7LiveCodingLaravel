@@ -9,12 +9,11 @@ class CommentaireController extends Controller
 {
     public function sauvegarder(Request $request)
     {
-        // $request->validate([
-        //     'nom' => 'required|max:255',
-        //     'description' => 'required',
-        //     'a_la_une' => 'required',
-        //     'url_image' => 'required',
-        // ]);
+        $request->validate([
+            'nom_complet_auteur' => 'required|max:10',
+            'contenu' => 'required|max:255',
+            'article_id' => 'required',
+        ]);
 
         // $commentaire = new Commentaire();
         // $commentaire->nom_complet_auteur = $request->nom;
