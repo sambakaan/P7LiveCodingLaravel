@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Commentaire;
 use Illuminate\Http\Request;
 use PDO;
 
@@ -17,9 +18,17 @@ class ArticleController extends Controller
 
     public function detail($id)
     {
+        // SELECT * From articles where id= id
         $article = Article::find($id);
+
+        // SELECT * From Commentaires where article_id = id
+        //$commentaires = Commentaire::where('article_id', '=', $id)->get();
+
+        $commentaires = $article->commentaires;
+
         return view('articles.detail', [
-            'article' => $article
+            'article' => $article,
+            'commentaires' => $commentaires
         ]);
 
         //  Article::all() => Select * from articles;
